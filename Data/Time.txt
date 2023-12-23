@@ -1,0 +1,60 @@
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 0.000618
+ Total Weight: 196
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 0.000510
+ Total Weight: 196
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 15.449100
+ Total Weight: 99
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 14.912077
+ Total Weight: 99
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 14.027599
+ Total Weight: 99
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 14.043261
+ Total Weight: 99
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 14.897954
+ Total Weight: 99
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 13.972394
+ Total Weight: 99
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 0.000517
+ Total Weight: 196
+
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 0.000542
+ Total Weight: 196
+
