@@ -67,7 +67,7 @@ Edge 64 35
 Edge 65 14
 Edge 66 2
 Edge 67 80
-Edge 68 52
+Edge 68 60
 Edge 69 65
 Edge 70 69
 Edge 71 11

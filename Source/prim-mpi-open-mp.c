@@ -146,7 +146,7 @@ int main(int argc,char *argv[]){
     for ( k = 0; k < mSize - 1; ++k){
         min = INT_MAX;
 
-    
+        #pragma omp parallel for shared(min, v1, v2) private(i, j)
         for ( i = 0; i < sendcounts[rank]; ++i){
 
             if (MST[i + displs[rank]] != -1) {
@@ -155,15 +155,17 @@ int main(int argc,char *argv[]){
 
                     if (MST[j] == -1) {
 
-                         //if the MatrixChunk[mSize*i+j] is less than min value
-                        if ( MatrixChunk[mSize*i+j] < min && MatrixChunk[mSize*i+j] != 0){
-                                
-                            min = MatrixChunk[mSize*i+j];
-                             v2 = j; // change the current edge
-                             v1 = i;
-                                
+                        #pragma omp critical
+                        {
+                            //if the MatrixChunk[mSize*i+j] is less than min value
+                            if ( MatrixChunk[mSize*i+j] < min && MatrixChunk[mSize*i+j] != 0){
+                                    
+                                min = MatrixChunk[mSize*i+j];
+                                v2 = j; // change the current edge
+                                v1 = i;
+                                    
+                            }
                         }
-                        
                     }
                 }
             }
