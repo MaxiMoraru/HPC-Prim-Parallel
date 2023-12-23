@@ -4,6 +4,9 @@
 #include <math.h>
 #include <limits.h>
 #include <time.h>
+#ifdef USE_OPENMP
+#include <omp.h>
+#endif
 
 int size; // number of processors
 int rank; // rank of each processor
