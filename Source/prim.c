@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 
-int main(int argc,char *argv[]){
+int main(){
     
     //declare host variables
 
@@ -51,39 +51,78 @@ int main(int argc,char *argv[]){
     // Initialize the minWeight
     int minWeight = 0;
 
-    int v1, v2, min;
+    int *v1, *v2, *min, i, j;
+
+    min = (int *)malloc( mSize * sizeof(int));
+    v1 = (int *)malloc( mSize * sizeof(int));
+    v2 = (int *)malloc( mSize * sizeof(int));
+
 
     for ( int k = 0; k < mSize - 1; ++k){
-        min = INT_MAX;
 
-        for (int i = 0; i < mSize; ++i){
 
-            if (MST[i] != -1) {
+        #pragma omp parallel for shared(min, v1, v2, MST, Matrix) private(i, j)
+        
+            for (i = 0; i < mSize; ++i){
 
-                for ( int j = 0; j < mSize; ++j){
+                min[i] = INT_MAX;
 
-                    if (MST[j] == -1) {
+                if (MST[i] != -1) {
 
-                        //if the MatrixChunk[mSize*i+j] is less than min value
-                        if ( Matrix[mSize*i+j] < min && Matrix[mSize*i+j] != 0){
+                    for (j = 0; j < mSize; ++j){
+
+                        if (MST[j] == -1) {
+
+                            //if the MatrixChunk[mSize*i+j] is less than min value
+                            
+                            if ( Matrix[mSize*i+j] < min[i] && Matrix[mSize*i+j] != 0){
                                     
-                            min = Matrix[mSize*i+j];
-                            v2 = j; // change the current edge
-                            v1 = i;
+                                min[i] = Matrix[mSize*i+j];
+                                v1[i] = i; // change the current edge
+                                v2[i] = j;
+                                    
+                            }
                             
                         }
                     }
                 }
             }
+        
 
+        // find global min
+        int globalMin = INT_MAX;
+        int globalV1, globalV2;
+
+        for (int i = 0; i < mSize; ++i) {
+            if (min[i] < globalMin) {
+                globalMin = min[i];
+                globalV1 = v1[i];
+                globalV2 = v2[i];
+            }
         }
 
-        // Add the new vertex to the MST
-        MST[v2] = v1;
+        // update MST
+        MST[globalV2] = globalV1;
+        minWeight += globalMin;
         
-        // Add the weight of the edge to the minWeight
-        minWeight += min;
-        
+        /*
+            //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
+                if(k < 10 ){
+                    printf("Iteration %d\n", k);
+                    //print the mst array
+                    for (int i = 0; i < mSize; ++i) {
+                        if(MST[i] != -1){
+                            printf("%d - ", i);
+                        }
+                    }
+                    printf("\n");
+                    for (int i = 0; i < mSize; ++i) {
+                        if (min[i] != INT_MAX) {
+                            printf("Min: %d, v1: %d, v2: %d\n", min[i], v1[i], v2[i]);
+                        }
+                    }
+                }
+        */
 
     }
 

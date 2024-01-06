@@ -1,8 +1,8 @@
 The min minWeight is 196
 V0 connects: 0 57 
 V1 connects: 81 
-V2 connects: 21 66 
-V3 connects: 30 99 
+V2 connects: 19 21 66 
+V3 connects: 99 
 V4 connects: none
 V5 connects: 12 14 36 43 60 62 
 V6 connects: none
@@ -18,7 +18,7 @@ V15 connects: 7 88
 V16 connects: none
 V17 connects: none
 V18 connects: 91 
-V19 connects: 35 52 
+V19 connects: 30 35 52 
 V20 connects: none
 V21 connects: 75 
 V22 connects: 18 25 
@@ -29,7 +29,7 @@ V26 connects: 3
 V27 connects: 53 
 V28 connects: 56 
 V29 connects: 26 86 
-V30 connects: 19 
+V30 connects: none
 V31 connects: 48 
 V32 connects: none
 V33 connects: none

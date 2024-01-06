@@ -110,23 +110,23 @@ int main(int argc,char *argv[]){
         cudaMemcpy(v2, dev_v2, mSize * sizeof(int), cudaMemcpyDeviceToHost);
 
 
-/*
-        //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
-        if(k < 10 ){
-            printf("Iteration %d\n", k);
-            //print the mst array
-            for (int i = 0; i < mSize; ++i) {
-                if(MST[i] != -1){
-                    printf("%d - ", i);}
-            }
-            printf("\n");
-            for (int i = 0; i < mSize; ++i) {
-                if (min[i] != INT_MAX) {
-                    printf("Min: %d, v1: %d, v2: %d\n", min[i], v1[i], v2[i]);
+        /*
+            //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
+            if(k < 10 ){
+                printf("Iteration %d\n", k);
+                //print the mst array
+                for (int i = 0; i < mSize; ++i) {
+                    if(MST[i] != -1){
+                        printf("%d - ", i);}
+                }
+                printf("\n");
+                for (int i = 0; i < mSize; ++i) {
+                    if (min[i] != INT_MAX) {
+                        printf("Min: %d, v1: %d, v2: %d\n", min[i], v1[i], v2[i]);
+                    }
                 }
             }
-        }
-*/
+        */
         
 
         //find global min

@@ -31,7 +31,7 @@ $(BUILD_DIR)/prim-mpi: $(BUILD_DIR)/prim-mpi.o
 	$(MPI_CC) $(CFLAGS) $^ -o $@
 
 $(BUILD_DIR)/prim: $(BUILD_DIR)/prim.o
-	$(GCC) $(CFLAGS) $^ -o $@
+	$(GCC) $(CFLAGS_OPENMP) $^ -o $@
 
 $(BUILD_DIR)/prim-cuda-open-mp: $(BUILD_DIR)/prim-cuda-open-mp.o
 	$(CUDA_NVCC) $(CUDA_FLAGS) $^ -o $@
@@ -43,7 +43,7 @@ $(BUILD_DIR)/prim-mpi.o: $(SRC_DIR)/prim-mpi-open-mp.c
 	$(MPI_CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/prim.o: $(SRC_DIR)/prim.c
-	$(GCC) $(CFLAGS) -c $< -o $@
+	$(GCC) $(CFLAGS_OPENMP) -c $< -o $@
 
 $(BUILD_DIR)/prim-cuda-open-mp.o: $(SRC_DIR)/prim-cuda-open-mp.cu
 	$(CUDA_NVCC) $(CUDA_FLAGS) -c $< -o $@
@@ -59,6 +59,7 @@ test-mpi: $(BUILD_DIR)/prim-mpi
 	mpirun -np 8 ./$(BUILD_DIR)/prim-mpi
 
 test-prim: $(BUILD_DIR)/prim
+	@export OMP_NUM_THREADS=16 USE_OPENMP=1;
 	./$(BUILD_DIR)/prim
 
 test-cuda-open-mp: $(BUILD_DIR)/prim-cuda-open-mp
