@@ -7,6 +7,7 @@
 #ifdef USE_OPENMP
 #include <omp.h>
 #endif
+#include <stdbool.h>
 
 int size; // number of processors
 int rank; // rank of each processor
@@ -149,7 +150,7 @@ int main(int argc,char *argv[]){
     for ( k = 0; k < mSize - 1; ++k){
         min = INT_MAX;
 
-        #pragma omp parallel for shared(min, v1, v2) private(i, j)
+        #pragma omp parallel for 
         for ( i = 0; i < sendcounts[rank]; ++i){
 
             if (MST[i + displs[rank]] != -1) {
@@ -194,10 +195,22 @@ int main(int argc,char *argv[]){
     calc_time = finish-start;
 
     if (rank == 0){
+        // Open the result file and write the results
         f_result = fopen("./Data/Result.txt", "w");
-        fprintf(f_result,"The min minWeight is %d\n ", minWeight);
-        for ( i=0; i< mSize; ++i){
-            fprintf(f_result,"Edge %d %d\n",i, MST[i]);
+        fprintf(f_result,"The min minWeight is %d\n", minWeight);
+        for (int i = 0; i < mSize; ++i){
+            fprintf(f_result,"V%d connects: ", i);
+            bool isConnected = false;
+            for (int j = 0; j < mSize; ++j) {
+                if (MST[j] == i) {
+                    fprintf(f_result, "%d ", j);
+                    isConnected = true;
+                }
+            }
+            if (!isConnected) {
+                fprintf(f_result, "none");
+            }
+            fprintf(f_result, "\n");
         }
         fclose(f_result);
 

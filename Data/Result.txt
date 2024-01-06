@@ -1,101 +1,101 @@
 The min minWeight is 196
- Edge 0 0
-Edge 1 89
-Edge 2 84
-Edge 3 26
-Edge 4 48
-Edge 5 92
-Edge 6 99
-Edge 7 15
-Edge 8 50
-Edge 9 89
-Edge 10 68
-Edge 11 14
-Edge 12 5
-Edge 13 77
-Edge 14 5
-Edge 15 66
-Edge 16 48
-Edge 17 82
-Edge 18 22
-Edge 19 2
-Edge 20 41
-Edge 21 2
-Edge 22 13
-Edge 23 60
-Edge 24 51
-Edge 25 22
-Edge 26 29
-Edge 27 8
-Edge 28 23
-Edge 29 72
-Edge 30 19
-Edge 31 52
-Edge 32 35
-Edge 33 42
-Edge 34 96
-Edge 35 19
-Edge 36 5
-Edge 37 77
-Edge 38 76
-Edge 39 43
-Edge 40 64
-Edge 41 11
-Edge 42 85
-Edge 43 5
-Edge 44 71
-Edge 45 99
-Edge 46 57
-Edge 47 34
-Edge 48 31
-Edge 49 94
-Edge 50 85
-Edge 51 76
-Edge 52 19
-Edge 53 27
-Edge 54 11
-Edge 55 47
-Edge 56 28
-Edge 57 0
-Edge 58 88
-Edge 59 92
-Edge 60 5
-Edge 61 87
-Edge 62 5
-Edge 63 11
-Edge 64 35
-Edge 65 14
-Edge 66 2
-Edge 67 80
-Edge 68 52
-Edge 69 65
-Edge 70 69
-Edge 71 11
-Edge 72 59
-Edge 73 49
-Edge 74 13
-Edge 75 21
-Edge 76 45
-Edge 77 57
-Edge 78 84
-Edge 79 43
-Edge 80 11
-Edge 81 1
-Edge 82 73
-Edge 83 62
-Edge 84 37
-Edge 85 94
-Edge 86 29
-Edge 87 23
-Edge 88 15
-Edge 89 41
-Edge 90 85
-Edge 91 18
-Edge 92 66
-Edge 93 77
-Edge 94 12
-Edge 95 13
-Edge 96 79
-Edge 97 72
-Edge 98 86
-Edge 99 3
+V0 connects: 0 57 
+V1 connects: 81 
+V2 connects: 21 66 
+V3 connects: 30 99 
+V4 connects: none
+V5 connects: 12 14 36 43 60 62 
+V6 connects: none
+V7 connects: none
+V8 connects: 27 
+V9 connects: none
+V10 connects: none
+V11 connects: 41 54 63 71 80 
+V12 connects: 94 
+V13 connects: 22 74 95 
+V14 connects: 11 65 
+V15 connects: 7 88 
+V16 connects: none
+V17 connects: none
+V18 connects: 91 
+V19 connects: 35 52 
+V20 connects: none
+V21 connects: 75 
+V22 connects: 18 25 
+V23 connects: 28 87 
+V24 connects: none
+V25 connects: none
+V26 connects: 3 
+V27 connects: 53 
+V28 connects: 56 
+V29 connects: 26 86 
+V30 connects: 19 
+V31 connects: 48 
+V32 connects: none
+V33 connects: none
+V34 connects: 47 
+V35 connects: 32 64 
+V36 connects: none
+V37 connects: 84 
+V38 connects: none
+V39 connects: none
+V40 connects: none
+V41 connects: 20 89 
+V42 connects: 33 
+V43 connects: 39 79 
+V44 connects: none
+V45 connects: 76 
+V46 connects: none
+V47 connects: 55 
+V48 connects: 4 16 
+V49 connects: 73 
+V50 connects: 8 
+V51 connects: 24 
+V52 connects: 31 68 
+V53 connects: none
+V54 connects: none
+V55 connects: none
+V56 connects: none
+V57 connects: 46 77 
+V58 connects: none
+V59 connects: 72 
+V60 connects: 23 
+V61 connects: none
+V62 connects: 83 
+V63 connects: none
+V64 connects: 40 
+V65 connects: 69 
+V66 connects: 15 92 
+V67 connects: none
+V68 connects: 10 
+V69 connects: 70 
+V70 connects: none
+V71 connects: 44 
+V72 connects: 29 97 
+V73 connects: 82 
+V74 connects: none
+V75 connects: none
+V76 connects: 38 51 
+V77 connects: 13 37 93 
+V78 connects: none
+V79 connects: 96 
+V80 connects: 67 
+V81 connects: none
+V82 connects: 17 
+V83 connects: none
+V84 connects: 2 78 
+V85 connects: 42 50 90 
+V86 connects: 98 
+V87 connects: 61 
+V88 connects: 58 
+V89 connects: 1 9 
+V90 connects: none
+V91 connects: none
+V92 connects: 5 59 
+V93 connects: none
+V94 connects: 49 85 
+V95 connects: none
+V96 connects: 34 
+V97 connects: none
+V98 connects: none
+V99 connects: 6 45 

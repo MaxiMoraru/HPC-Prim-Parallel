@@ -1,77 +1,119 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
+#include <math.h>
 #include <limits.h>
+#include <time.h>
+#include <stdbool.h>
 
-#define V 5 // Number of vertices
 
-int minKey(int key[], bool mstSet[])
-{
+int main(int argc,char *argv[]){
+    
+    //declare host variables
 
-    int min = INT_MAX, min_index;
+    FILE *f_matrix;
+    int mSize; // Declare the size of the matrix
+    int *MST; // Declare MST variable
 
-    for (int v = 0; v < V; v++)
-    {
-        if (mstSet[v] == false && key[v] < min)
-        {
-            min = key[v];
-            min_index = v;
+    // Open the file
+    f_matrix = fopen("./Data/matrix-100.txt", "r");
+    if (f_matrix){
+        // Read the number of vertices
+        fscanf(f_matrix, "%d\n", &mSize);
+    }
+    else {
+        printf("File matrix-100.txt not found.\n");
+        return 1;
+    }
+
+    // Allocate memory for the matrix
+    int *Matrix = (int *)malloc(mSize * mSize * sizeof(int));
+
+    // Read the matrix from the file
+    for (int i = 0; i < mSize; i++) {
+        for (int j = 0; j < mSize; j++) {
+            fscanf(f_matrix, "%d", &Matrix[i * mSize + j]);
         }
     }
 
-    return min_index;
-}
+    fclose(f_matrix);
 
-void printMST(int parent[], int graph[V][V])
-{
-    printf("Edge \tWeight\n");
-    for (int i = 1; i < V; i++)
-    {
-        printf("%d - %d \t%d \n", parent[i], i, graph[i][parent[i]]);
-    }
-}
+    // Allocate memory for the MST
+    MST = (int *)malloc(mSize * sizeof(int));
 
-void primMST(int graph[V][V])
-{
-    int parent[V];
-    int key[V];
-    bool mstSet[V];
-
-    for (int i = 0; i < V; i++)
-    {
-        key[i] = INT_MAX;
-        mstSet[i] = false;
+    // Initialize the MST
+    for (int i = 0; i < mSize; i++) {
+        MST[i] = -1;
     }
 
-    key[0] = 0;
-    parent[0] = -1;
+    // Set the first vertex as the root
+    MST[0] = 0;
 
-    for (int count = 0; count < V - 1; count++)
-    {
-        int u = minKey(key, mstSet);
-        mstSet[u] = true;
+    // Initialize the minWeight
+    int minWeight = 0;
 
-        for (int v = 0; v < V; v++)
-        {
-            if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])
-            {
-                parent[v] = u;
-                key[v] = graph[u][v];
+    int v1, v2, min;
+
+    for ( int k = 0; k < mSize - 1; ++k){
+        min = INT_MAX;
+
+        for (int i = 0; i < mSize; ++i){
+
+            if (MST[i] != -1) {
+
+                for ( int j = 0; j < mSize; ++j){
+
+                    if (MST[j] == -1) {
+
+                        //if the MatrixChunk[mSize*i+j] is less than min value
+                        if ( Matrix[mSize*i+j] < min && Matrix[mSize*i+j] != 0){
+                                    
+                            min = Matrix[mSize*i+j];
+                            v2 = j; // change the current edge
+                            v1 = i;
+                            
+                        }
+                    }
+                }
+            }
+
+        }
+
+        // Add the new vertex to the MST
+        MST[v2] = v1;
+        
+        // Add the weight of the edge to the minWeight
+        minWeight += min;
+        
+
+    }
+
+
+    
+    // ... omitted code for writing the result and cleaning up ...
+
+     FILE *f_result;
+
+    // Open the result file and write the results
+    f_result = fopen("./Data/Result.txt", "w");
+    fprintf(f_result,"The min minWeight is %d\n", minWeight);
+    for (int i = 0; i < mSize; ++i){
+        fprintf(f_result,"V%d connects: ", i);
+        bool isConnected = false;
+        for (int j = 0; j < mSize; ++j) {
+            if (MST[j] == i) {
+                fprintf(f_result, "%d ", j);
+                isConnected = true;
             }
         }
+        if (!isConnected) {
+            fprintf(f_result, "none");
+        }
+        fprintf(f_result, "\n");
     }
+    fclose(f_result);
 
-    printMST(parent, graph);
-}
 
-int main()
-{
-    int graph[V][V] = {{0, 2, 0, 6, 0},
-                       {2, 0, 3, 8, 5},
-                       {0, 3, 0, 0, 7},
-                       {6, 8, 0, 0, 9},
-                       {0, 5, 7, 9, 0}};
 
-    primMST(graph);
 
     return 0;
 }
