@@ -11,10 +11,10 @@
 
 
 typedef struct Connection {
-        int value;
-        int v1;
-        int v2;
-        } Connection;
+    int value;
+    int v1;
+    int v2;
+} Connection;
 
 #pragma omp declare reduction(minimum : Connection : omp_out = omp_in.value < omp_out.value ? omp_in : omp_out) initializer (omp_priv=omp_orig)
 
