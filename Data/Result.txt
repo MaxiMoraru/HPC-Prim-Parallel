@@ -1,52 +1,52 @@
 The min minWeight is 196
 V0 connects: 0 57 
-V1 connects: 1 
+V1 connects: 1 81 
 V2 connects: 2 21 84 
 V3 connects: 3 99 
-V4 connects: 4 
-V5 connects: 5 12 14 36 60 62 
+V4 connects: 4 48 
+V5 connects: 5 12 36 60 62 
 V6 connects: 6 
 V7 connects: 7 
 V8 connects: 8 27 
 V9 connects: 9 
 V10 connects: 10 
-V11 connects: 11 41 54 63 71 80 
+V11 connects: 11 14 54 63 71 80 
 V12 connects: 12 94 
 V13 connects: 13 22 74 95 
-V14 connects: 11 14 
+V14 connects: 14 
 V15 connects: 7 15 88 
 V16 connects: 16 
 V17 connects: 17 
-V18 connects: 18 91 
-V19 connects: 19 30 52 
+V18 connects: 18 
+V19 connects: 19 52 
 V20 connects: 20 
 V21 connects: 21 75 
-V22 connects: 18 22 
+V22 connects: 18 22 25 
 V23 connects: 23 28 87 
-V24 connects: 24 51 
+V24 connects: 24 30 51 
 V25 connects: 25 
 V26 connects: 3 26 
 V27 connects: 27 53 
 V28 connects: 28 56 
 V29 connects: 26 29 72 86 
-V30 connects: 30 81 
-V31 connects: 31 48 
+V30 connects: 19 30 
+V31 connects: 31 
 V32 connects: 32 
 V33 connects: 33 
 V34 connects: 34 47 
-V35 connects: 19 32 35 64 
+V35 connects: 32 35 64 
 V36 connects: 36 
 V37 connects: 37 
 V38 connects: 35 38 
 V39 connects: 39 
 V40 connects: 40 
-V41 connects: 41 65 89 
-V42 connects: 42 
+V41 connects: 11 20 41 65 89 
+V42 connects: 33 42 
 V43 connects: 43 79 
 V44 connects: 44 
 V45 connects: 45 76 
 V46 connects: 46 
-V47 connects: 25 47 55 
+V47 connects: 47 55 
 V48 connects: 16 48 
 V49 connects: 49 73 
 V50 connects: 8 50 
@@ -68,7 +68,7 @@ V65 connects: 65 69
 V66 connects: 2 15 66 
 V67 connects: 67 
 V68 connects: 10 68 
-V69 connects: 20 69 
+V69 connects: 69 70 
 V70 connects: 70 
 V71 connects: 44 71 
 V72 connects: 59 72 97 
@@ -76,19 +76,19 @@ V73 connects: 73 82
 V74 connects: 74 
 V75 connects: 75 
 V76 connects: 38 76 
-V77 connects: 13 77 93 
+V77 connects: 13 77 91 93 
 V78 connects: 78 
 V79 connects: 79 96 
 V80 connects: 4 67 80 
 V81 connects: 81 
 V82 connects: 17 82 
 V83 connects: 83 
-V84 connects: 37 78 84 
+V84 connects: 37 41 84 
 V85 connects: 42 50 85 90 
-V86 connects: 33 86 98 
+V86 connects: 86 98 
 V87 connects: 61 87 
 V88 connects: 58 88 
-V89 connects: 1 9 70 89 
+V89 connects: 1 9 89 
 V90 connects: 90 
 V91 connects: 91 
 V92 connects: 5 24 66 92 
@@ -96,6 +96,6 @@ V93 connects: 29 93
 V94 connects: 49 85 94 
 V95 connects: 95 
 V96 connects: 34 96 
-V97 connects: 97 
+V97 connects: 78 97 
 V98 connects: 98 
 V99 connects: 6 45 99 

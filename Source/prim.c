@@ -5,6 +5,14 @@
 #include <time.h>
 #include <stdbool.h>
 
+typedef struct Connection {
+    int value;
+    int v1;
+    int v2;
+} Connection;
+
+#pragma omp declare reduction(minimum : Connection : omp_out = omp_in.value < omp_out.value ? omp_in : omp_out) initializer (omp_priv=omp_orig)
+
 
 int main(){
     
@@ -12,7 +20,7 @@ int main(){
 
     FILE *f_matrix;
     int mSize; // Declare the size of the matrix
-    int *MST; // Declare MST variable
+    Connection *MST; // Declare MST variable
 
     // Open the file
     f_matrix = fopen("./Data/matrix-100.txt", "r");
@@ -38,48 +46,50 @@ int main(){
     fclose(f_matrix);
 
     // Allocate memory for the MST
-    MST = (int *)malloc(mSize * sizeof(int));
+    MST = (Connection *)malloc(mSize * sizeof(Connection));
 
     // Initialize the MST
     for (int i = 0; i < mSize; i++) {
-        MST[i] = -1;
+        MST[i].value = -1;
     }
 
     // Set the first vertex as the root
-    MST[0] = 0;
+    MST[0].value = 0;
+    MST[0].v1 = 0;
+    MST[0].v2 = 0;
 
     // Initialize the minWeight
     int minWeight = 0;
 
-    int *v1, *v2, *min, i, j;
+    int  i, j;
+    Connection *min;
 
-    min = (int *)malloc( mSize * sizeof(int));
-    v1 = (int *)malloc( mSize * sizeof(int));
-    v2 = (int *)malloc( mSize * sizeof(int));
+    min = (Connection *)malloc( mSize * sizeof(Connection));
+
 
 
     for ( int k = 0; k < mSize - 1; ++k){
 
 
-        #pragma omp parallel for shared(min, v1, v2, MST, Matrix) private(i, j)
+        #pragma omp parallel for shared(min, MST, Matrix) private(i, j)
         
             for (i = 0; i < mSize; ++i){
 
-                min[i] = INT_MAX;
+                min[i].value = INT_MAX;
 
-                if (MST[i] != -1) {
+                if (MST[i].value != -1) {
 
                     for (j = 0; j < mSize; ++j){
 
-                        if (MST[j] == -1) {
+                        if (MST[j].value == -1) {
 
                             //if the MatrixChunk[mSize*i+j] is less than min value
                             
-                            if ( Matrix[mSize*i+j] < min[i] && Matrix[mSize*i+j] != 0){
+                            if ( Matrix[mSize*i+j] < min[i].value && Matrix[mSize*i+j] != 0){
                                     
-                                min[i] = Matrix[mSize*i+j];
-                                v1[i] = i; // change the current edge
-                                v2[i] = j;
+                                min[i].value = Matrix[mSize*i+j];
+                                min[i].v1 = i;
+                                min[i].v2 = j;
                                     
                             }
                             
@@ -90,22 +100,20 @@ int main(){
         
 
         // find global min
-        int globalMin = INT_MAX;
-        int globalV1, globalV2;
-        
+        Connection globalMin;
+        globalMin.value = INT_MAX;
 
+        
+        #pragma omp parallel for reduction(minimum: globalMin)
         for (int i = 0; i < mSize; ++i) {
-            if (min[i] < globalMin) {
+            if (min[i].value < globalMin.value) {
                 globalMin = min[i];
-                globalV1 = v1[i];
-                globalV2 = v2[i];
             }
         }
 
         // update MST
-        MST[globalV2] = globalV1;
-        minWeight += globalMin;
-        
+        MST[globalMin.v2] = globalMin;
+        minWeight += globalMin.value;
         /*
             //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
                 if(k < 10 ){
@@ -140,7 +148,7 @@ int main(){
         fprintf(f_result,"V%d connects: ", i);
         bool isConnected = false;
         for (int j = 0; j < mSize; ++j) {
-            if (MST[j] == i) {
+            if (MST[j].v1 == i || MST[j].v2 == i) {
                 fprintf(f_result, "%d ", j);
                 isConnected = true;
             }
@@ -152,6 +160,11 @@ int main(){
     }
     fclose(f_result);
 
+    // Free the memory
+
+    free(Matrix);
+    free(MST);
+    free(min);
 
 
 
