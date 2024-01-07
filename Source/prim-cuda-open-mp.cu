@@ -118,8 +118,14 @@ int main(int argc,char *argv[]){
         //call kernel
         findMin<<<blocks, THREADS_PER_BLOCK>>>(dev_Matrix, dev_MST, dev_min, mSize);
 
-        //wait for kernel to finish
-        cudaDeviceSynchronize();
+        //check for errors
+        cudaError_t errSync  = cudaGetLastError();
+        cudaError_t errAsync = cudaDeviceSynchronize();
+        if (errSync != cudaSuccess) 
+            printf("Sync kernel error: %s\n", cudaGetErrorString(errSync));
+        if (errAsync != cudaSuccess)
+            printf("Async kernel error: %s\n", cudaGetErrorString(errAsync));
+
 
         //copy data from device to host
         cudaMemcpy(min, dev_min, mSize * sizeof(Connection), cudaMemcpyDeviceToHost);

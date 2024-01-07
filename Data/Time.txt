@@ -828,3 +828,8 @@
  Time of execution: 0.000000
  Total Weight: 196
 
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
