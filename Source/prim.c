@@ -92,6 +92,7 @@ int main(){
         // find global min
         int globalMin = INT_MAX;
         int globalV1, globalV2;
+        
 
         for (int i = 0; i < mSize; ++i) {
             if (min[i] < globalMin) {
@@ -156,3 +157,44 @@ int main(){
 
     return 0;
 }
+
+
+
+
+/*
+
+    // find global min
+        int globalMin = INT_MAX;
+        int globalV1, globalV2;
+
+        struct MinIndex {
+            int value;
+            int v1;
+            int v2;
+        };
+
+        struct MinIndex minIndex;
+        minIndex.value = INT_MAX;
+
+
+        #pragma omp declare reduction(minimum : struct MinIndex : omp_out = omp_in.value < omp_out.value ? omp_in : omp_out)
+
+        #pragma omp parallel for reduction(minimum: minIndex)
+        for (int i = 0; i < mSize; ++i) {
+            if (min[i] < minIndex.value) {
+                minIndex.value = min[i];
+                minIndex.v1 = v1[i];
+                minIndex.v2 = v2[i];
+            }
+        }
+
+        globalMin = minIndex.value;
+        globalV1 = minIndex.v1;
+        globalV2 = minIndex.v2;
+
+        //update MST
+        MST[globalV2] = globalV1;
+        minWeight += globalMin;
+        
+
+*/

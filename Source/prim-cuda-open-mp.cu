@@ -8,31 +8,45 @@
 
 #define THREADS_PER_BLOCK 1024
 
-__global__ void findMin(int *Matrix, int *MST, int *min, int *v1, int *v2, int mSize) {
+
+
+typedef struct Connection {
+        int value;
+        int v1;
+        int v2;
+        } Connection;
+
+#pragma omp declare reduction(minimum : Connection : omp_out = omp_in.value < omp_out.value ? omp_in : omp_out) initializer (omp_priv=omp_orig)
+
+__global__ void findMin(int *Matrix, Connection *MST, Connection *min, int mSize) {
     int index = threadIdx.x + blockIdx.x * blockDim.x;
     int stride = blockDim.x * gridDim.x;
 
     for (int i = index; i < mSize; i += stride) {
-        min[index] = INT_MAX;
-        if (MST[i] != -1) {
+        min[index].value = INT_MAX;
+        if (MST[i].value != -1) {
             for (int j = 0; j < mSize; ++j) {
-                if (MST[j] == -1 && Matrix[mSize*i+j] < min[index] && Matrix[mSize*i+j] != 0) {
-                    min[index] = Matrix[mSize*i+j];
-                    v1[index] = i;
-                    v2[index] = j;
+                if (MST[j].value == -1 && Matrix[mSize*i+j] < min[index].value && Matrix[mSize*i+j] != 0) {
+                    min[index].value = Matrix[mSize*i+j];
+                    min[index].v1 = i;
+                    min[index].v2 = j;
                 }
             }
         }
     }
 }
 
+
+
 int main(int argc,char *argv[]){
     
-    //declare host variables
+    /*****************************************************/
+    // get the matrix from the file
+    /*****************************************************/
 
     FILE *f_matrix;
     int mSize; // Declare the size of the matrix
-    int *MST; // Declare MST variable
+    Connection *MST; // Declare MST variable
 
     // Open the file
     f_matrix = fopen("./Data/matrix-100.txt", "r");
@@ -58,103 +72,92 @@ int main(int argc,char *argv[]){
     fclose(f_matrix);
 
 
+    /*****************************************************/
+    // find the MST
+    /*****************************************************/
+
     
 
     //declare device variables
-    int *dev_Matrix, *dev_MST, *dev_min, *dev_v1, *dev_v2;
+    int *dev_Matrix;
+    Connection *dev_MST, *dev_min;
 
-    MST = (int *)malloc(mSize * sizeof(int)); // Allocate memory for MST
+    MST = (Connection *)malloc(mSize * sizeof(Connection)); // Allocate memory for MST
 
     // Initialize MST
     for (int i = 0; i < mSize; ++i) {
-        MST[i] = -1;
+        MST[i].value = -1;
     }
 
     // Set the first vertex as the root
-    MST[0] = 0;
+    MST[0].value = 0;
+    MST[0].v1 = 0;
+    MST[0].v2 = 0;
+
     // Initialize the minWeight
     int minWeight = 0;
 
     // allocate memory on device
     cudaMalloc((void**)&dev_Matrix, mSize * mSize * sizeof(int));
-    cudaMalloc((void**)&dev_MST, mSize * sizeof(int));
-    cudaMalloc((void**)&dev_min, mSize * sizeof(int));
-    cudaMalloc((void**)&dev_v1, mSize * sizeof(int));
-    cudaMalloc((void**)&dev_v2, mSize * sizeof(int));
+    cudaMalloc((void**)&dev_MST, mSize * sizeof(Connection));
+    cudaMalloc((void**)&dev_min, mSize * sizeof(Connection));
 
     // copy data from host to device
     cudaMemcpy(dev_Matrix, Matrix, mSize * mSize * sizeof(int), cudaMemcpyHostToDevice);
-    cudaMemcpy(dev_MST, MST, mSize * sizeof(int), cudaMemcpyHostToDevice);
+    cudaMemcpy(dev_MST, MST, mSize * sizeof(Connection), cudaMemcpyHostToDevice);
 
     //declare blocks
     int blocks = (mSize + THREADS_PER_BLOCK - 1) / THREADS_PER_BLOCK;
 
     //declare host variables
-    int *min = (int *)malloc(mSize * sizeof(int));
-    int *v1 = (int *)malloc(mSize * sizeof(int));
-    int *v2 = (int *)malloc(mSize * sizeof(int));
-
+    Connection *min = (Connection *)malloc(mSize * sizeof(Connection));
     
 
     for (int k = 0; k < mSize - 1; ++k) {
 
         //call kernel
-        findMin<<<blocks, THREADS_PER_BLOCK>>>(dev_Matrix, dev_MST, dev_min, dev_v1, dev_v2, mSize);
+        findMin<<<blocks, THREADS_PER_BLOCK>>>(dev_Matrix, dev_MST, dev_min, mSize);
 
         //wait for kernel to finish
         cudaDeviceSynchronize();
 
         //copy data from device to host
-        cudaMemcpy(min, dev_min, mSize * sizeof(int), cudaMemcpyDeviceToHost);
-        cudaMemcpy(v1, dev_v1, mSize * sizeof(int), cudaMemcpyDeviceToHost);
-        cudaMemcpy(v2, dev_v2, mSize * sizeof(int), cudaMemcpyDeviceToHost);
-
-
-        /*
-            //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
-            if(k < 10 ){
-                printf("Iteration %d\n", k);
-                //print the mst array
-                for (int i = 0; i < mSize; ++i) {
-                    if(MST[i] != -1){
-                        printf("%d - ", i);}
-                }
-                printf("\n");
-                for (int i = 0; i < mSize; ++i) {
-                    if (min[i] != INT_MAX) {
-                        printf("Min: %d, v1: %d, v2: %d\n", min[i], v1[i], v2[i]);
-                    }
-                }
-            }
-        */
+        cudaMemcpy(min, dev_min, mSize * sizeof(Connection), cudaMemcpyDeviceToHost);
         
+        //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
 
         //find global min
-        int globalMin = INT_MAX;
-        int globalV1, globalV2;
+        Connection globalMin;
 
-        
+        globalMin.value = INT_MAX;
+
+
+
+        //parallelize the for using openmp
+
+        #pragma omp parallel for reduction(minimum: globalMin)
+
         for (int i = 0; i < mSize; ++i) {
-            if (min[i] < globalMin) {
+            if (min[i].value < globalMin.value) {
                 globalMin = min[i];
-                globalV1 = v1[i];
-                globalV2 = v2[i];
             }
         }
 
-        MST[globalV2] = globalV1;
-        minWeight += globalMin;
+        MST[globalMin.v2] = globalMin;
+        minWeight += globalMin.value;
 
     
 
         //update MST on device
-        cudaMemcpy(dev_MST, MST, mSize * sizeof(int), cudaMemcpyHostToDevice);
+        cudaMemcpy(dev_MST, MST, mSize * sizeof(Connection), cudaMemcpyHostToDevice);
     }
 
 
 
 
-    // ... omitted code for writing the result and cleaning up ...
+    /*****************************************************/
+    // write the result to the file
+    /*****************************************************/
 
      FILE *f_result, *f_time;
 
@@ -165,7 +168,7 @@ int main(int argc,char *argv[]){
         fprintf(f_result,"V%d connects: ", i);
         bool isConnected = false;
         for (int j = 0; j < mSize; ++j) {
-            if (MST[j] == i) {
+            if (MST[j].v1 == i || MST[j].v2 == i) {
                 fprintf(f_result, "%d ", j);
                 isConnected = true;
             }
@@ -187,8 +190,10 @@ int main(int argc,char *argv[]){
     cudaFree(dev_Matrix);
     cudaFree(dev_MST);
     cudaFree(dev_min);
-    cudaFree(dev_v1);
-    cudaFree(dev_v2);
+    free(Matrix);
+    free(MST);
+    free(min);
+
 
     return 0;
 }

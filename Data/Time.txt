@@ -492,3 +492,339 @@
  Time of execution: 0.000000
  Total Weight: 196
 
+
+ Number of processors: 8
+ Number of vertices: 100
+ Time of execution: 0.000649
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 221
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 269
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 246
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 242
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 254
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 296
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 242
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 302
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 263
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 211
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 211
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 0
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+
+
+ Number of vertices: 100
+ Time of execution: 0.000000
+ Total Weight: 196
+

@@ -1,101 +1,101 @@
 The min minWeight is 196
 V0 connects: 0 57 
-V1 connects: 81 
-V2 connects: 19 21 66 
-V3 connects: 99 
-V4 connects: none
-V5 connects: 12 14 36 43 60 62 
-V6 connects: none
-V7 connects: none
-V8 connects: 27 
-V9 connects: none
-V10 connects: none
-V11 connects: 41 54 63 71 80 
-V12 connects: 94 
-V13 connects: 22 74 95 
-V14 connects: 11 65 
-V15 connects: 7 88 
-V16 connects: none
-V17 connects: none
-V18 connects: 91 
-V19 connects: 30 35 52 
-V20 connects: none
-V21 connects: 75 
-V22 connects: 18 25 
-V23 connects: 28 87 
-V24 connects: none
-V25 connects: none
-V26 connects: 3 
-V27 connects: 53 
-V28 connects: 56 
-V29 connects: 26 86 
-V30 connects: none
-V31 connects: 48 
-V32 connects: none
-V33 connects: none
-V34 connects: 47 
-V35 connects: 32 64 
-V36 connects: none
-V37 connects: 84 
-V38 connects: none
-V39 connects: none
-V40 connects: none
-V41 connects: 20 89 
-V42 connects: 33 
-V43 connects: 39 79 
-V44 connects: none
-V45 connects: 76 
-V46 connects: none
-V47 connects: 55 
-V48 connects: 4 16 
-V49 connects: 73 
-V50 connects: 8 
-V51 connects: 24 
-V52 connects: 31 68 
-V53 connects: none
-V54 connects: none
-V55 connects: none
-V56 connects: none
-V57 connects: 46 77 
-V58 connects: none
-V59 connects: 72 
-V60 connects: 23 
-V61 connects: none
-V62 connects: 83 
-V63 connects: none
-V64 connects: 40 
-V65 connects: 69 
-V66 connects: 15 92 
-V67 connects: none
-V68 connects: 10 
-V69 connects: 70 
-V70 connects: none
-V71 connects: 44 
-V72 connects: 29 97 
-V73 connects: 82 
-V74 connects: none
-V75 connects: none
-V76 connects: 38 51 
-V77 connects: 13 37 93 
-V78 connects: none
-V79 connects: 96 
-V80 connects: 67 
-V81 connects: none
-V82 connects: 17 
-V83 connects: none
-V84 connects: 2 78 
-V85 connects: 42 50 90 
-V86 connects: 98 
-V87 connects: 61 
-V88 connects: 58 
-V89 connects: 1 9 
-V90 connects: none
-V91 connects: none
-V92 connects: 5 59 
-V93 connects: none
-V94 connects: 49 85 
-V95 connects: none
-V96 connects: 34 
-V97 connects: none
-V98 connects: none
-V99 connects: 6 45 
+V1 connects: 1 
+V2 connects: 2 21 66 
+V3 connects: 3 99 
+V4 connects: 4 48 
+V5 connects: 5 12 14 36 60 62 
+V6 connects: 6 
+V7 connects: 7 
+V8 connects: 8 27 
+V9 connects: 9 
+V10 connects: 10 
+V11 connects: 11 41 54 63 71 80 
+V12 connects: 12 
+V13 connects: 13 22 74 95 
+V14 connects: 11 14 
+V15 connects: 7 15 88 
+V16 connects: 16 
+V17 connects: 17 
+V18 connects: 18 91 
+V19 connects: 19 52 
+V20 connects: 20 
+V21 connects: 21 75 
+V22 connects: 18 22 
+V23 connects: 23 28 87 
+V24 connects: 24 30 
+V25 connects: 25 
+V26 connects: 3 26 
+V27 connects: 27 53 
+V28 connects: 28 56 
+V29 connects: 26 29 72 86 
+V30 connects: 19 30 
+V31 connects: 31 
+V32 connects: 32 
+V33 connects: 33 
+V34 connects: 34 47 
+V35 connects: 32 35 64 
+V36 connects: 36 
+V37 connects: 37 84 
+V38 connects: 35 38 
+V39 connects: 39 
+V40 connects: 40 
+V41 connects: 41 65 89 
+V42 connects: 33 42 
+V43 connects: 39 43 79 
+V44 connects: 44 
+V45 connects: 45 76 
+V46 connects: 46 
+V47 connects: 25 47 55 
+V48 connects: 16 48 
+V49 connects: 49 73 
+V50 connects: 8 50 
+V51 connects: 51 
+V52 connects: 31 52 68 
+V53 connects: 53 
+V54 connects: 54 
+V55 connects: 55 
+V56 connects: 56 
+V57 connects: 46 57 77 
+V58 connects: 58 
+V59 connects: 59 92 
+V60 connects: 23 60 
+V61 connects: 61 
+V62 connects: 43 62 83 
+V63 connects: 63 
+V64 connects: 40 64 
+V65 connects: 65 69 
+V66 connects: 15 66 
+V67 connects: 67 
+V68 connects: 10 68 
+V69 connects: 69 70 
+V70 connects: 70 
+V71 connects: 44 71 81 
+V72 connects: 59 72 97 
+V73 connects: 73 82 
+V74 connects: 74 
+V75 connects: 75 
+V76 connects: 20 38 51 76 90 
+V77 connects: 13 37 77 93 
+V78 connects: 78 
+V79 connects: 79 96 
+V80 connects: 4 67 80 
+V81 connects: 81 
+V82 connects: 17 82 
+V83 connects: 83 
+V84 connects: 2 78 84 
+V85 connects: 42 50 85 94 
+V86 connects: 86 98 
+V87 connects: 61 87 
+V88 connects: 58 88 
+V89 connects: 1 9 89 
+V90 connects: 85 90 
+V91 connects: 91 
+V92 connects: 5 24 92 
+V93 connects: 29 93 
+V94 connects: 49 94 
+V95 connects: 95 
+V96 connects: 34 96 
+V97 connects: 97 
+V98 connects: 98 
+V99 connects: 6 45 99 
