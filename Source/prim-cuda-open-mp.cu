@@ -6,6 +6,8 @@
 #include <omp.h>
 #include <cuda.h>
 
+#define MATRIXFILE "./Data/matrix-1000.txt"
+
 #define THREADS_PER_BLOCK 1024
 
 
@@ -51,13 +53,13 @@ int main(int argc,char *argv[]){
     Connection *MST; // Declare MST variable
 
     // Open the file
-    f_matrix = fopen("./Data/matrix-1000.txt", "r");
+    f_matrix = fopen(MATRIXFILE, "r");
     if (f_matrix){
         // Read the number of vertices
         fscanf(f_matrix, "%d\n", &mSize);
     }
     else {
-        printf("File matrix-1000.txt not found.\n");
+        printf("File not found.\n");
         return 1;
     }
 
