@@ -5,6 +5,8 @@
 #include <time.h>
 #include <stdbool.h>
 
+#define MATRIXFILE "./Data/matrix-100.txt"
+
 typedef struct Connection {
     int value;
     int v1;
@@ -23,13 +25,13 @@ int main(){
     Connection *MST; // Declare MST variable
 
     // Open the file
-    f_matrix = fopen("./Data/matrix-100.txt", "r");
+    f_matrix = fopen(MATRIXFILE, "r");
     if (f_matrix){
         // Read the number of vertices
         fscanf(f_matrix, "%d\n", &mSize);
     }
     else {
-        printf("File matrix-100.txt not found.\n");
+        printf("Error: File not found\n");
         return 1;
     }
 
@@ -71,26 +73,26 @@ int main(){
     for ( int k = 0; k < mSize - 1; ++k){
 
 
-        #pragma omp parallel for shared(min, MST, Matrix) private(i, j)
+            #pragma omp parallel for shared(min, MST, Matrix) private(i, j)
         
             for (i = 0; i < mSize; ++i){
 
                 min[i].value = INT_MAX;
+                min[i].v1 = -1;
+                min[i].v2 = -1;
 
                 if (MST[i].value != -1) {
 
                     for (j = 0; j < mSize; ++j){
 
                         if (MST[j].value == -1) {
-
-                            //if the MatrixChunk[mSize*i+j] is less than min value
-                            
+                           
                             if ( Matrix[mSize*i+j] < min[i].value && Matrix[mSize*i+j] != 0){
-                                    
+                                        
                                 min[i].value = Matrix[mSize*i+j];
                                 min[i].v1 = i;
                                 min[i].v2 = j;
-                                    
+                                        
                             }
                             
                         }
@@ -102,44 +104,28 @@ int main(){
         // find global min
         Connection globalMin;
         globalMin.value = INT_MAX;
-
+        
         
         #pragma omp parallel for reduction(minimum: globalMin)
         for (int i = 0; i < mSize; ++i) {
-            if (min[i].value < globalMin.value) {
-                globalMin = min[i];
+            if(min[i].value != INT_MAX){
+                if (min[i].value < globalMin.value) {
+                    globalMin = min[i];
+                }
             }
         }
+
 
         // update MST
         MST[globalMin.v2] = globalMin;
         minWeight += globalMin.value;
-        /*
-            //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
-                if(k < 10 ){
-                    printf("Iteration %d\n", k);
-                    //print the mst array
-                    for (int i = 0; i < mSize; ++i) {
-                        if(MST[i] != -1){
-                            printf("%d - ", i);
-                        }
-                    }
-                    printf("\n");
-                    for (int i = 0; i < mSize; ++i) {
-                        if (min[i] != INT_MAX) {
-                            printf("Min: %d, v1: %d, v2: %d\n", min[i], v1[i], v2[i]);
-                        }
-                    }
-                }
-        */
+        
 
+        
     }
 
 
-    
-    // ... omitted code for writing the result and cleaning up ...
-
-     FILE *f_result;
+    FILE *f_result;
 
     // Open the result file and write the results
     f_result = fopen("./Data/Result.txt", "w");
@@ -148,7 +134,7 @@ int main(){
         fprintf(f_result,"V%d connects: ", i);
         bool isConnected = false;
         for (int j = 0; j < mSize; ++j) {
-            if (MST[j].v1 == i || MST[j].v2 == i) {
+            if ((MST[j].v1 == i || MST[j].v2 == i) && j != i) {
                 fprintf(f_result, "%d ", j);
                 isConnected = true;
             }
@@ -171,43 +157,3 @@ int main(){
     return 0;
 }
 
-
-
-
-/*
-
-    // find global min
-        int globalMin = INT_MAX;
-        int globalV1, globalV2;
-
-        struct MinIndex {
-            int value;
-            int v1;
-            int v2;
-        };
-
-        struct MinIndex minIndex;
-        minIndex.value = INT_MAX;
-
-
-        #pragma omp declare reduction(minimum : struct MinIndex : omp_out = omp_in.value < omp_out.value ? omp_in : omp_out)
-
-        #pragma omp parallel for reduction(minimum: minIndex)
-        for (int i = 0; i < mSize; ++i) {
-            if (min[i] < minIndex.value) {
-                minIndex.value = min[i];
-                minIndex.v1 = v1[i];
-                minIndex.v2 = v2[i];
-            }
-        }
-
-        globalMin = minIndex.value;
-        globalV1 = minIndex.v1;
-        globalV2 = minIndex.v2;
-
-        //update MST
-        MST[globalV2] = globalV1;
-        minWeight += globalMin;
-        
-
-*/

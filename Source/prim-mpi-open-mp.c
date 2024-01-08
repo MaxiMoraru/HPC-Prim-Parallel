@@ -9,18 +9,47 @@
 #endif
 #include <stdbool.h>
 
+
+
+#define MATRIXFILE "./Data/matrix-1000.txt"
+
+typedef struct Connection {
+    int value;
+    int v1;
+    int v2;
+} Connection;
+
+
+#pragma omp declare reduction(minimum : Connection : omp_out = omp_in.value < omp_out.value ? omp_in : omp_out) initializer (omp_priv=omp_orig)
+
 int size; // number of processors
 int rank; // rank of each processor
 int* MatrixChunk; // chunk of matrix for each processor
 int mSize; // number of vertices
 int* displs; // displacements
 int* sendcounts; // sendcounts
-typedef struct { int v1; int v2; } Edge; // edge
-int* MST; // minimum spanning tree
+//typedef struct { int v1; int v2; } Edge; // edge
+Connection* MST; // minimum spanning tree
 int minWeight; // minimum weight
 FILE *f_matrix; // file of matrix
 FILE *f_time; // file of time 
 FILE *f_result; // file of result
+
+typedef struct ConnRank {
+    Connection conn;
+    int rank;
+} ConnRank;
+
+//custom mpi reduce function
+void minConnRank(void *in, void *inout, int *len, MPI_Datatype *datatype){
+    ConnRank *inConnRank = (ConnRank *)in;
+    ConnRank *inoutConnRank = (ConnRank *)inout;
+
+    if (inConnRank->conn.value < inoutConnRank->conn.value) {
+        *inoutConnRank = *inConnRank;
+    }
+}
+
 
 int main(int argc,char *argv[]){
 
@@ -28,22 +57,31 @@ int main(int argc,char *argv[]){
     MPI_Comm_rank ( MPI_COMM_WORLD, &rank);
     MPI_Comm_size ( MPI_COMM_WORLD, &size );
 
+    // Define the MPI datatype for the ConnRank struct
+    MPI_Datatype connRankType;
+    MPI_Type_contiguous(4, MPI_INT, &connRankType);
+    MPI_Type_commit(&connRankType);
+
+    //create custom mpi reduce function
+    MPI_Op minConnRankOp;
+    MPI_Op_create(minConnRank, 1, &minConnRankOp);
+
+
 
     /************************************************/
     // read the number of vertices from file
     /************************************************/
     if (rank==0){
-        f_matrix = fopen("./Data/matrix-100.txt", "r");
+        f_matrix = fopen(MATRIXFILE, "r");
         if (f_matrix){
             fscanf(f_matrix, "%d\n", &mSize);
         }
         else {
-            printf("File matrix-100.txt not found.\n");
+            printf("File not found.\n");
             MPI_Abort(MPI_COMM_WORLD, 1);
         }
         fclose(f_matrix);
     }
-
 
     MPI_Bcast(&mSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
@@ -53,8 +91,8 @@ int main(int argc,char *argv[]){
     
     int i,j,k;       
 
-    displs = (int*)malloc(sizeof(int) * size);   
-    sendcounts = (int*)malloc(sizeof(int) * size);
+    displs = (int*)malloc( size * sizeof(int));   
+    sendcounts = (int*)malloc(size * sizeof(int));
 
     displs[0] = 0;
     sendcounts[0] = mSize / size;
@@ -76,7 +114,6 @@ int main(int argc,char *argv[]){
     // send the matrix chunk to each processor
     /************************************************/
 
-
     MatrixChunk = (int *)malloc(sendcounts[rank] * mSize * sizeof(int));
 
     if (rank == 0) {
@@ -84,9 +121,9 @@ int main(int argc,char *argv[]){
         int *MatrixChunkRead = (int *)malloc(sendcounts[size-1] * mSize * sizeof(int));
 
         // Read the matrix from the file on the root process
-        f_matrix = fopen("./Data/matrix-100.txt", "r");
+        f_matrix = fopen(MATRIXFILE, "r");
         if (!f_matrix) {
-            fprintf(stderr, "Error opening file: %s\n", "../Data/matrix-100.txt");
+            fprintf(stderr, "Error opening file.\n");
             MPI_Abort(MPI_COMM_WORLD, 2);
         }
 
@@ -125,65 +162,84 @@ int main(int argc,char *argv[]){
     /************************************************/
 
 
-    MST = (int*)malloc(sizeof(int)*mSize); // max size is number of vertices
+    MST = (Connection*)malloc(mSize * sizeof(Connection)); // max size is number of vertices
 
     for ( i = 0; i < mSize; ++i){
-        MST[i] = -1;
+        MST[i].value = -1;
     }
     
     double start; 
 
     start = MPI_Wtime(); // start to calculate running time
         
-    MST[0] = 0;
+    MST[0].value = 0;
+    MST[0].v1 = 0;
+    MST[0].v2 = 0;
+    
     minWeight = 0;
 
-    int min;
-    int v1 = 0;
-    int v2 = 0;
-
-    struct { int min; int rank; } minRow, row;
-    Edge edge;
+    Connection *min;
+    min = (Connection *)malloc( mSize * sizeof(Connection));
 
 
     //cannot use parallel for here because prim is a sequential algorithm
     for ( k = 0; k < mSize - 1; ++k){
-        min = INT_MAX;
 
-        #pragma omp parallel for 
+        Connection local;
+        local.value = INT_MAX;
+        local.v1 = -1;
+        local.v2 = -1;
+
+
+        #pragma omp parallel for shared(min, MST, MatrixChunk) private(i, j)
         for ( i = 0; i < sendcounts[rank]; ++i){
 
-            if (MST[i + displs[rank]] != -1) {
+            min[i].value = INT_MAX;
+            min[i].v1 = -1;
+            min[i].v2 = -1;
+
+            if (MST[i + displs[rank]].value != -1) {
 
                 for ( j = 0; j < mSize; ++j){
 
-                    if (MST[j] == -1) {
+                    if (MST[j].value == -1) {
 
-                        #pragma omp critical
-                        {
-                            //if the MatrixChunk[mSize*i+j] is less than min value
-                            if ( MatrixChunk[mSize*i+j] < min && MatrixChunk[mSize*i+j] != 0){
-                                    
-                                min = MatrixChunk[mSize*i+j];
-                                v2 = j; // change the current edge
-                                v1 = i;
-                                    
-                            }
+                        if ( MatrixChunk[mSize*i+j] < min[i].value && MatrixChunk[mSize*i+j] != 0){
+
+                            min[i].value = MatrixChunk[mSize*i+j];
+                            min[i].v1 = i+displs[rank];
+                            min[i].v2 = j;
+                            
                         }
+                            
                     }
                 }
             }
         }
-        row.min = min;
-        row.rank = rank; // the rank of min in row
-        // each proc have to send the min row to others 
-        MPI_Allreduce(&row, &minRow, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD); 
-        edge.v1 = v1 + displs[rank];
-        edge.v2 = v2;
-        MPI_Bcast(&edge, 1, MPI_2INT, minRow.rank, MPI_COMM_WORLD);
 
-        MST[edge.v2] = edge.v1;
-        minWeight += minRow.min;
+        //find local min
+
+        #pragma omp parallel for reduction(minimum: local)
+        for(int i = 0; i < sendcounts[rank]; i++){
+            if(min[i].value != INT_MAX){
+                if (min[i].value < local.value) {
+                    local = min[i];
+                }
+            }
+        }
+
+
+        ConnRank localMin;
+        localMin.rank = rank;
+        localMin.conn = local;
+        
+        ConnRank globalMin;
+        //find global min
+        
+        MPI_Allreduce(&localMin, &globalMin, 1, connRankType, minConnRankOp, MPI_COMM_WORLD);
+
+        MST[globalMin.conn.v2] = globalMin.conn;
+        minWeight += globalMin.conn.value;
     }
     
     /************************************************/
@@ -194,15 +250,21 @@ int main(int argc,char *argv[]){
     finish = MPI_Wtime();
     calc_time = finish-start;
 
+
+
     if (rank == 0){
-        // Open the result file and write the results
+
+
+
+         // Open the result file and write the results
         f_result = fopen("./Data/Result.txt", "w");
         fprintf(f_result,"The min minWeight is %d\n", minWeight);
         for (int i = 0; i < mSize; ++i){
             fprintf(f_result,"V%d connects: ", i);
             bool isConnected = false;
             for (int j = 0; j < mSize; ++j) {
-                if (MST[j] == i) {
+                printf("MST[%d].v1 = %d\n", j, MST[j].v1);
+                if ((MST[j].v1 == i || MST[j].v2 == i) && j != i) {
                     fprintf(f_result, "%d ", j);
                     isConnected = true;
                 }
@@ -214,6 +276,7 @@ int main(int argc,char *argv[]){
         }
         fclose(f_result);
 
+
         f_time = fopen("./Data/Time.txt", "a+");
         fprintf(f_time, "\n Number of processors: %d\n Number of vertices: %d\n Time of execution: %f\n Total Weight: %d\n\n", size, mSize ,calc_time, minWeight);
         fclose(f_time);
@@ -224,6 +287,7 @@ int main(int argc,char *argv[]){
     free(MST);
     free(displs);
     free(sendcounts);
+
 
 
     MPI_Finalize();

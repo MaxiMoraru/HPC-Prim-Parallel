@@ -1,101 +1,1001 @@
-The min minWeight is 196
-V0 connects: 0 57 
-V1 connects: 1 81 
-V2 connects: 2 21 84 
-V3 connects: 3 99 
-V4 connects: 4 48 
-V5 connects: 5 12 36 60 62 
-V6 connects: 6 
-V7 connects: 7 
-V8 connects: 8 27 
-V9 connects: 9 
-V10 connects: 10 
-V11 connects: 11 14 54 63 71 80 
-V12 connects: 12 94 
-V13 connects: 13 22 74 95 
-V14 connects: 14 
-V15 connects: 7 15 88 
-V16 connects: 16 
-V17 connects: 17 
-V18 connects: 18 
-V19 connects: 19 52 
-V20 connects: 20 
-V21 connects: 21 75 
-V22 connects: 18 22 25 
-V23 connects: 23 28 87 
-V24 connects: 24 30 51 
-V25 connects: 25 
-V26 connects: 3 26 
-V27 connects: 27 53 
-V28 connects: 28 56 
-V29 connects: 26 29 72 86 
-V30 connects: 19 30 
-V31 connects: 31 
-V32 connects: 32 
-V33 connects: 33 
-V34 connects: 34 47 
-V35 connects: 32 35 64 
-V36 connects: 36 
-V37 connects: 37 
-V38 connects: 35 38 
-V39 connects: 39 
-V40 connects: 40 
-V41 connects: 11 20 41 65 89 
-V42 connects: 33 42 
-V43 connects: 43 79 
-V44 connects: 44 
-V45 connects: 45 76 
-V46 connects: 46 
-V47 connects: 47 55 
-V48 connects: 16 48 
-V49 connects: 49 73 
-V50 connects: 8 50 
-V51 connects: 51 
-V52 connects: 31 52 
-V53 connects: 53 
-V54 connects: 54 
-V55 connects: 55 
-V56 connects: 56 
-V57 connects: 46 57 77 
-V58 connects: 58 
-V59 connects: 59 92 
-V60 connects: 23 39 60 68 
-V61 connects: 61 
-V62 connects: 43 62 83 
-V63 connects: 63 
-V64 connects: 40 64 
-V65 connects: 65 69 
-V66 connects: 2 15 66 
-V67 connects: 67 
-V68 connects: 10 68 
-V69 connects: 69 70 
-V70 connects: 70 
-V71 connects: 44 71 
-V72 connects: 59 72 97 
-V73 connects: 73 82 
-V74 connects: 74 
-V75 connects: 75 
-V76 connects: 38 76 
-V77 connects: 13 77 91 93 
-V78 connects: 78 
-V79 connects: 79 96 
-V80 connects: 4 67 80 
-V81 connects: 81 
-V82 connects: 17 82 
-V83 connects: 83 
-V84 connects: 37 41 84 
-V85 connects: 42 50 85 90 
-V86 connects: 86 98 
-V87 connects: 61 87 
-V88 connects: 58 88 
-V89 connects: 1 9 89 
-V90 connects: 90 
-V91 connects: 91 
-V92 connects: 5 24 66 92 
-V93 connects: 29 93 
-V94 connects: 49 85 94 
-V95 connects: 95 
-V96 connects: 34 96 
-V97 connects: 78 97 
-V98 connects: 98 
-V99 connects: 6 45 99 
+The min minWeight is 999
+V0 connects: none
+V1 connects: none
+V2 connects: none
+V3 connects: none
+V4 connects: none
+V5 connects: none
+V6 connects: none
+V7 connects: none
+V8 connects: none
+V9 connects: none
+V10 connects: none
+V11 connects: none
+V12 connects: none
+V13 connects: none
+V14 connects: none
+V15 connects: none
+V16 connects: none
+V17 connects: none
+V18 connects: none
+V19 connects: none
+V20 connects: none
+V21 connects: none
+V22 connects: none
+V23 connects: none
+V24 connects: none
+V25 connects: none
+V26 connects: none
+V27 connects: none
+V28 connects: none
+V29 connects: none
+V30 connects: none
+V31 connects: none
+V32 connects: none
+V33 connects: none
+V34 connects: none
+V35 connects: none
+V36 connects: none
+V37 connects: none
+V38 connects: none
+V39 connects: none
+V40 connects: none
+V41 connects: none
+V42 connects: none
+V43 connects: none
+V44 connects: none
+V45 connects: none
+V46 connects: none
+V47 connects: none
+V48 connects: none
+V49 connects: none
+V50 connects: none
+V51 connects: none
+V52 connects: none
+V53 connects: none
+V54 connects: none
+V55 connects: none
+V56 connects: none
+V57 connects: none
+V58 connects: none
+V59 connects: none
+V60 connects: none
+V61 connects: none
+V62 connects: none
+V63 connects: none
+V64 connects: none
+V65 connects: none
+V66 connects: none
+V67 connects: none
+V68 connects: none
+V69 connects: none
+V70 connects: none
+V71 connects: none
+V72 connects: none
+V73 connects: none
+V74 connects: none
+V75 connects: none
+V76 connects: none
+V77 connects: none
+V78 connects: none
+V79 connects: none
+V80 connects: none
+V81 connects: none
+V82 connects: none
+V83 connects: none
+V84 connects: none
+V85 connects: none
+V86 connects: none
+V87 connects: none
+V88 connects: none
+V89 connects: none
+V90 connects: none
+V91 connects: none
+V92 connects: none
+V93 connects: none
+V94 connects: none
+V95 connects: none
+V96 connects: none
+V97 connects: none
+V98 connects: none
+V99 connects: none
+V100 connects: none
+V101 connects: none
+V102 connects: none
+V103 connects: none
+V104 connects: none
+V105 connects: none
+V106 connects: none
+V107 connects: none
+V108 connects: none
+V109 connects: none
+V110 connects: none
+V111 connects: none
+V112 connects: none
+V113 connects: none
+V114 connects: none
+V115 connects: none
+V116 connects: none
+V117 connects: none
+V118 connects: none
+V119 connects: none
+V120 connects: none
+V121 connects: none
+V122 connects: none
+V123 connects: none
+V124 connects: none
+V125 connects: none
+V126 connects: none
+V127 connects: none
+V128 connects: none
+V129 connects: none
+V130 connects: none
+V131 connects: none
+V132 connects: none
+V133 connects: none
+V134 connects: none
+V135 connects: none
+V136 connects: none
+V137 connects: none
+V138 connects: none
+V139 connects: none
+V140 connects: none
+V141 connects: none
+V142 connects: none
+V143 connects: none
+V144 connects: none
+V145 connects: none
+V146 connects: none
+V147 connects: none
+V148 connects: none
+V149 connects: none
+V150 connects: none
+V151 connects: none
+V152 connects: none
+V153 connects: none
+V154 connects: none
+V155 connects: none
+V156 connects: none
+V157 connects: none
+V158 connects: none
+V159 connects: none
+V160 connects: none
+V161 connects: none
+V162 connects: none
+V163 connects: none
+V164 connects: none
+V165 connects: none
+V166 connects: none
+V167 connects: none
+V168 connects: none
+V169 connects: none
+V170 connects: none
+V171 connects: none
+V172 connects: none
+V173 connects: none
+V174 connects: none
+V175 connects: none
+V176 connects: none
+V177 connects: none
+V178 connects: none
+V179 connects: none
+V180 connects: none
+V181 connects: none
+V182 connects: none
+V183 connects: none
+V184 connects: none
+V185 connects: none
+V186 connects: none
+V187 connects: none
+V188 connects: none
+V189 connects: none
+V190 connects: none
+V191 connects: none
+V192 connects: none
+V193 connects: none
+V194 connects: none
+V195 connects: none
+V196 connects: none
+V197 connects: none
+V198 connects: none
+V199 connects: none
+V200 connects: none
+V201 connects: none
+V202 connects: none
+V203 connects: none
+V204 connects: none
+V205 connects: none
+V206 connects: none
+V207 connects: none
+V208 connects: none
+V209 connects: none
+V210 connects: none
+V211 connects: none
+V212 connects: none
+V213 connects: none
+V214 connects: none
+V215 connects: none
+V216 connects: none
+V217 connects: none
+V218 connects: none
+V219 connects: none
+V220 connects: none
+V221 connects: none
+V222 connects: none
+V223 connects: none
+V224 connects: none
+V225 connects: none
+V226 connects: none
+V227 connects: none
+V228 connects: none
+V229 connects: none
+V230 connects: none
+V231 connects: none
+V232 connects: none
+V233 connects: none
+V234 connects: none
+V235 connects: none
+V236 connects: none
+V237 connects: none
+V238 connects: none
+V239 connects: none
+V240 connects: none
+V241 connects: none
+V242 connects: none
+V243 connects: none
+V244 connects: none
+V245 connects: none
+V246 connects: none
+V247 connects: none
+V248 connects: none
+V249 connects: none
+V250 connects: none
+V251 connects: none
+V252 connects: none
+V253 connects: none
+V254 connects: none
+V255 connects: none
+V256 connects: none
+V257 connects: none
+V258 connects: none
+V259 connects: none
+V260 connects: none
+V261 connects: none
+V262 connects: none
+V263 connects: none
+V264 connects: none
+V265 connects: none
+V266 connects: none
+V267 connects: none
+V268 connects: none
+V269 connects: none
+V270 connects: none
+V271 connects: none
+V272 connects: none
+V273 connects: none
+V274 connects: none
+V275 connects: none
+V276 connects: none
+V277 connects: none
+V278 connects: none
+V279 connects: none
+V280 connects: none
+V281 connects: none
+V282 connects: none
+V283 connects: none
+V284 connects: none
+V285 connects: none
+V286 connects: none
+V287 connects: none
+V288 connects: none
+V289 connects: none
+V290 connects: none
+V291 connects: none
+V292 connects: none
+V293 connects: none
+V294 connects: none
+V295 connects: none
+V296 connects: none
+V297 connects: none
+V298 connects: none
+V299 connects: none
+V300 connects: none
+V301 connects: none
+V302 connects: none
+V303 connects: none
+V304 connects: none
+V305 connects: none
+V306 connects: none
+V307 connects: none
+V308 connects: none
+V309 connects: none
+V310 connects: none
+V311 connects: none
+V312 connects: 662 
+V313 connects: none
+V314 connects: none
+V315 connects: none
+V316 connects: none
+V317 connects: none
+V318 connects: none
+V319 connects: none
+V320 connects: none
+V321 connects: none
+V322 connects: none
+V323 connects: none
+V324 connects: none
+V325 connects: none
+V326 connects: none
+V327 connects: none
+V328 connects: none
+V329 connects: none
+V330 connects: none
+V331 connects: none
+V332 connects: none
+V333 connects: none
+V334 connects: none
+V335 connects: none
+V336 connects: none
+V337 connects: none
+V338 connects: none
+V339 connects: none
+V340 connects: none
+V341 connects: none
+V342 connects: none
+V343 connects: none
+V344 connects: none
+V345 connects: none
+V346 connects: none
+V347 connects: none
+V348 connects: none
+V349 connects: none
+V350 connects: none
+V351 connects: none
+V352 connects: none
+V353 connects: none
+V354 connects: none
+V355 connects: none
+V356 connects: none
+V357 connects: none
+V358 connects: none
+V359 connects: none
+V360 connects: none
+V361 connects: none
+V362 connects: none
+V363 connects: none
+V364 connects: none
+V365 connects: none
+V366 connects: none
+V367 connects: none
+V368 connects: none
+V369 connects: none
+V370 connects: none
+V371 connects: none
+V372 connects: none
+V373 connects: none
+V374 connects: none
+V375 connects: none
+V376 connects: none
+V377 connects: none
+V378 connects: none
+V379 connects: none
+V380 connects: none
+V381 connects: none
+V382 connects: none
+V383 connects: none
+V384 connects: none
+V385 connects: none
+V386 connects: none
+V387 connects: none
+V388 connects: none
+V389 connects: none
+V390 connects: none
+V391 connects: none
+V392 connects: 598 
+V393 connects: none
+V394 connects: none
+V395 connects: none
+V396 connects: none
+V397 connects: none
+V398 connects: none
+V399 connects: none
+V400 connects: none
+V401 connects: none
+V402 connects: none
+V403 connects: none
+V404 connects: none
+V405 connects: none
+V406 connects: none
+V407 connects: none
+V408 connects: none
+V409 connects: none
+V410 connects: none
+V411 connects: none
+V412 connects: none
+V413 connects: none
+V414 connects: none
+V415 connects: none
+V416 connects: none
+V417 connects: none
+V418 connects: none
+V419 connects: 461 
+V420 connects: none
+V421 connects: none
+V422 connects: none
+V423 connects: none
+V424 connects: none
+V425 connects: none
+V426 connects: none
+V427 connects: none
+V428 connects: none
+V429 connects: none
+V430 connects: none
+V431 connects: none
+V432 connects: none
+V433 connects: none
+V434 connects: none
+V435 connects: none
+V436 connects: none
+V437 connects: none
+V438 connects: none
+V439 connects: none
+V440 connects: none
+V441 connects: none
+V442 connects: none
+V443 connects: none
+V444 connects: none
+V445 connects: none
+V446 connects: none
+V447 connects: none
+V448 connects: none
+V449 connects: none
+V450 connects: none
+V451 connects: none
+V452 connects: none
+V453 connects: 557 
+V454 connects: none
+V455 connects: none
+V456 connects: none
+V457 connects: none
+V458 connects: none
+V459 connects: none
+V460 connects: none
+V461 connects: none
+V462 connects: none
+V463 connects: none
+V464 connects: none
+V465 connects: none
+V466 connects: none
+V467 connects: none
+V468 connects: none
+V469 connects: none
+V470 connects: none
+V471 connects: none
+V472 connects: none
+V473 connects: none
+V474 connects: none
+V475 connects: none
+V476 connects: none
+V477 connects: none
+V478 connects: none
+V479 connects: none
+V480 connects: none
+V481 connects: none
+V482 connects: none
+V483 connects: none
+V484 connects: none
+V485 connects: none
+V486 connects: none
+V487 connects: 486 
+V488 connects: none
+V489 connects: none
+V490 connects: none
+V491 connects: none
+V492 connects: none
+V493 connects: none
+V494 connects: none
+V495 connects: none
+V496 connects: none
+V497 connects: none
+V498 connects: none
+V499 connects: none
+V500 connects: none
+V501 connects: none
+V502 connects: none
+V503 connects: none
+V504 connects: none
+V505 connects: none
+V506 connects: none
+V507 connects: none
+V508 connects: none
+V509 connects: none
+V510 connects: none
+V511 connects: none
+V512 connects: none
+V513 connects: none
+V514 connects: none
+V515 connects: none
+V516 connects: none
+V517 connects: none
+V518 connects: none
+V519 connects: none
+V520 connects: none
+V521 connects: none
+V522 connects: none
+V523 connects: none
+V524 connects: none
+V525 connects: 348 
+V526 connects: none
+V527 connects: 665 
+V528 connects: 503 
+V529 connects: 278 
+V530 connects: none
+V531 connects: none
+V532 connects: none
+V533 connects: none
+V534 connects: none
+V535 connects: none
+V536 connects: none
+V537 connects: none
+V538 connects: none
+V539 connects: none
+V540 connects: 512 
+V541 connects: none
+V542 connects: 625 
+V543 connects: none
+V544 connects: none
+V545 connects: none
+V546 connects: none
+V547 connects: none
+V548 connects: none
+V549 connects: 9 
+V550 connects: none
+V551 connects: none
+V552 connects: none
+V553 connects: none
+V554 connects: none
+V555 connects: none
+V556 connects: none
+V557 connects: none
+V558 connects: 951 
+V559 connects: none
+V560 connects: 448 
+V561 connects: none
+V562 connects: none
+V563 connects: none
+V564 connects: 462 
+V565 connects: none
+V566 connects: none
+V567 connects: none
+V568 connects: none
+V569 connects: none
+V570 connects: none
+V571 connects: none
+V572 connects: none
+V573 connects: none
+V574 connects: none
+V575 connects: none
+V576 connects: none
+V577 connects: none
+V578 connects: none
+V579 connects: none
+V580 connects: none
+V581 connects: none
+V582 connects: none
+V583 connects: none
+V584 connects: none
+V585 connects: none
+V586 connects: none
+V587 connects: 383 
+V588 connects: none
+V589 connects: none
+V590 connects: none
+V591 connects: none
+V592 connects: none
+V593 connects: none
+V594 connects: none
+V595 connects: 991 
+V596 connects: none
+V597 connects: 139 
+V598 connects: none
+V599 connects: none
+V600 connects: none
+V601 connects: none
+V602 connects: none
+V603 connects: 388 
+V604 connects: none
+V605 connects: none
+V606 connects: none
+V607 connects: none
+V608 connects: none
+V609 connects: none
+V610 connects: none
+V611 connects: none
+V612 connects: none
+V613 connects: none
+V614 connects: none
+V615 connects: none
+V616 connects: none
+V617 connects: none
+V618 connects: none
+V619 connects: none
+V620 connects: none
+V621 connects: none
+V622 connects: none
+V623 connects: none
+V624 connects: none
+V625 connects: none
+V626 connects: none
+V627 connects: none
+V628 connects: none
+V629 connects: 131 
+V630 connects: none
+V631 connects: none
+V632 connects: none
+V633 connects: none
+V634 connects: none
+V635 connects: 651 
+V636 connects: none
+V637 connects: 386 595 
+V638 connects: 29 
+V639 connects: 624 
+V640 connects: none
+V641 connects: none
+V642 connects: none
+V643 connects: 108 723 968 
+V644 connects: none
+V645 connects: 896 
+V646 connects: 240 
+V647 connects: 116 678 980 
+V648 connects: none
+V649 connects: none
+V650 connects: none
+V651 connects: none
+V652 connects: 645 
+V653 connects: none
+V654 connects: 365 
+V655 connects: 526 
+V656 connects: none
+V657 connects: none
+V658 connects: none
+V659 connects: 247 
+V660 connects: none
+V661 connects: 584 
+V662 connects: none
+V663 connects: 218 
+V664 connects: 405 
+V665 connects: none
+V666 connects: none
+V667 connects: 748 
+V668 connects: none
+V669 connects: none
+V670 connects: none
+V671 connects: 304 933 
+V672 connects: 685 
+V673 connects: 816 
+V674 connects: none
+V675 connects: none
+V676 connects: none
+V677 connects: none
+V678 connects: 6 324 746 
+V679 connects: 315 
+V680 connects: 847 
+V681 connects: none
+V682 connects: 152 
+V683 connects: 833 
+V684 connects: none
+V685 connects: none
+V686 connects: none
+V687 connects: 496 895 
+V688 connects: none
+V689 connects: 256 464 
+V690 connects: 704 
+V691 connects: none
+V692 connects: 794 
+V693 connects: 175 
+V694 connects: none
+V695 connects: none
+V696 connects: 636 903 
+V697 connects: 993 
+V698 connects: none
+V699 connects: none
+V700 connects: none
+V701 connects: 154 204 
+V702 connects: 241 
+V703 connects: none
+V704 connects: 928 
+V705 connects: none
+V706 connects: none
+V707 connects: 653 
+V708 connects: none
+V709 connects: none
+V710 connects: none
+V711 connects: none
+V712 connects: none
+V713 connects: none
+V714 connects: none
+V715 connects: 428 
+V716 connects: none
+V717 connects: 754 
+V718 connects: none
+V719 connects: none
+V720 connects: none
+V721 connects: 367 
+V722 connects: none
+V723 connects: 317 
+V724 connects: none
+V725 connects: none
+V726 connects: none
+V727 connects: none
+V728 connects: none
+V729 connects: none
+V730 connects: none
+V731 connects: 779 914 
+V732 connects: 963 
+V733 connects: none
+V734 connects: 619 700 
+V735 connects: none
+V736 connects: 583 846 
+V737 connects: none
+V738 connects: none
+V739 connects: 352 
+V740 connects: none
+V741 connects: none
+V742 connects: none
+V743 connects: none
+V744 connects: none
+V745 connects: none
+V746 connects: none
+V747 connects: 679 
+V748 connects: none
+V749 connects: none
+V750 connects: none
+V751 connects: 845 
+V752 connects: none
+V753 connects: 239 
+V754 connects: 707 
+V755 connects: none
+V756 connects: 697 
+V757 connects: none
+V758 connects: none
+V759 connects: none
+V760 connects: none
+V761 connects: none
+V762 connects: 147 602 710 876 
+V763 connects: 477 
+V764 connects: 123 157 171 
+V765 connects: 298 439 772 
+V766 connects: 101 122 160 252 283 967 
+V767 connects: 243 432 434 435 460 632 
+V768 connects: 27 202 349 720 783 855 
+V769 connects: 418 919 
+V770 connects: 155 
+V771 connects: 842 941 
+V772 connects: none
+V773 connects: 170 572 611 617 659 825 
+V774 connects: 45 85 232 273 661 917 
+V775 connects: 7 24 
+V776 connects: 65 350 565 689 727 948 
+V777 connects: 299 329 410 453 660 
+V778 connects: 301 517 523 753 
+V779 connects: none
+V780 connects: 56 200 443 529 
+V781 connects: 73 251 309 385 444 655 688 
+V782 connects: 20 143 159 640 908 
+V783 connects: 12 94 189 514 771 870 
+V784 connects: 291 325 610 808 
+V785 connects: 479 
+V786 connects: 145 179 260 567 875 
+V787 connects: 454 
+V788 connects: 97 272 578 600 
+V789 connects: 57 589 
+V790 connects: 992 
+V791 connects: 125 406 959 
+V792 connects: 728 
+V793 connects: 42 305 345 451 
+V794 connects: 551 770 
+V795 connects: 249 290 789 
+V796 connects: 166 216 702 774 
+V797 connects: none
+V798 connects: 275 642 686 952 
+V799 connects: 576 581 780 
+V800 connects: 194 
+V801 connects: 537 800 
+V802 connects: 535 694 858 859 
+V803 connects: 68 433 705 
+V804 connects: 515 522 
+V805 connects: 72 378 561 
+V806 connects: 8 222 323 513 
+V807 connects: 141 214 409 809 983 
+V808 connects: 14 467 871 934 
+V809 connects: 373 558 683 709 801 955 
+V810 connects: none
+V811 connects: 633 823 946 
+V812 connects: 620 
+V813 connects: 43 220 475 498 
+V814 connects: 490 559 862 
+V815 connects: 132 180 397 450 452 929 
+V816 connects: 749 
+V817 connects: 129 173 333 480 687 
+V818 connects: 544 733 
+V819 connects: 744 
+V820 connects: 69 199 234 244 607 
+V821 connects: 756 
+V822 connects: 336 
+V823 connects: 354 
+V824 connects: 245 864 960 982 
+V825 connects: 53 328 411 703 861 
+V826 connects: 263 608 
+V827 connects: 98 269 
+V828 connects: 504 
+V829 connects: 71 366 
+V830 connects: 817 
+V831 connects: 306 618 
+V832 connects: 519 562 775 787 
+V833 connects: 524 
+V834 connects: none
+V835 connects: 566 
+V836 connects: 192 663 
+V837 connects: 28 112 250 313 335 596 735 920 
+V838 connects: 520 541 
+V839 connects: 902 958 
+V840 connects: 113 612 626 
+V841 connects: 295 714 879 
+V842 connects: 201 819 
+V843 connects: 597 740 981 
+V844 connects: 372 898 
+V845 connects: none
+V846 connects: none
+V847 connects: 181 506 
+V848 connects: 656 
+V849 connects: 527 785 791 792 
+V850 connects: 210 384 634 654 
+V851 connects: 344 650 676 
+V852 connects: none
+V853 connects: 364 750 
+V854 connects: 476 
+V855 connects: 758 
+V856 connects: 292 
+V857 connects: none
+V858 connects: 206 882 
+V859 connects: 30 760 888 
+V860 connects: none
+V861 connects: 630 797 
+V862 connects: 730 850 
+V863 connects: 284 549 
+V864 connects: 196 
+V865 connects: 233 308 424 680 
+V866 connects: 976 
+V867 connects: 105 426 
+V868 connects: 465 
+V869 connects: 134 
+V870 connects: none
+V871 connects: 107 
+V872 connects: 553 670 
+V873 connects: none
+V874 connects: none
+V875 connects: none
+V876 connects: none
+V877 connects: none
+V878 connects: none
+V879 connects: none
+V880 connects: none
+V881 connects: none
+V882 connects: 969 
+V883 connects: none
+V884 connects: none
+V885 connects: none
+V886 connects: none
+V887 connects: none
+V888 connects: 601 616 
+V889 connects: 25 87 280 281 420 493 628 
+V890 connects: 46 883 
+V891 connects: 146 161 164 814 881 947 
+V892 connects: 360 463 528 657 743 854 873 
+V893 connects: 90 96 539 793 
+V894 connects: 267 525 579 592 649 857 944 
+V895 connects: 270 
+V896 connects: 78 
+V897 connects: 21 229 294 909 
+V898 connects: 193 347 972 
+V899 connects: 19 568 821 889 901 925 984 
+V900 connects: 11 39 50 52 144 501 543 725 741 860 910 
+V901 connects: 18 44 387 556 590 752 900 956 
+V902 connects: none
+V903 connects: 92 
+V904 connects: 877 
+V905 connects: 962 
+V906 connects: 237 415 458 573 682 777 853 954 985 
+V907 connects: 41 93 106 340 389 638 945 
+V908 connects: 379 425 509 532 648 729 784 830 936 
+V909 connects: 400 577 635 915 997 
+V910 connects: 35 268 970 
+V911 connects: 32 205 265 421 488 555 893 907 
+V912 connects: 371 824 
+V913 connects: 511 554 615 
+V914 connects: 761 
+V915 connects: 174 197 246 257 468 540 609 759 943 
+V916 connects: 183 353 
+V917 connects: 248 358 497 766 837 913 
+V918 connects: 167 396 414 693 708 973 
+V919 connects: 176 286 471 641 667 804 
+V920 connects: 153 698 
+V921 connects: 100 398 423 818 874 965 988 998 
+V922 connects: 63 643 
+V923 connects: 156 261 419 533 588 614 666 764 
+V924 connects: 102 235 264 530 
+V925 connects: 331 472 736 798 986 
+V926 connects: 34 300 542 865 
+V927 connects: 40 74 209 296 303 394 713 726 926 971 999 
+V928 connects: none
+V929 connects: 188 742 
+V930 connects: 99 117 213 442 712 880 884 918 
+V931 connects: 3 346 393 404 487 
+V932 connects: 15 288 848 940 
+V933 connects: none
+V934 connects: 807 974 
+V935 connects: 1 51 446 637 979 987 
+V936 connects: 5 225 238 285 302 327 912 
+V937 connects: 67 119 151 266 318 369 499 843 911 
+V938 connects: 47 230 351 835 
+V939 connects: 13 59 66 163 412 507 599 795 802 897 975 
+V940 connects: 33 110 135 186 505 587 768 927 
+V941 connects: 773 820 
+V942 connects: 10 130 138 416 440 441 500 545 681 757 939 
+V943 connects: 86 190 258 407 531 603 
+V944 connects: 326 437 459 510 623 732 786 906 996 
+V945 connects: 4 79 121 149 254 262 401 429 722 
+V946 connects: 83 852 
+V947 connects: 172 191 255 357 591 605 738 839 916 
+V948 connects: 142 203 552 
+V949 connects: 330 356 868 922 931 
+V950 connects: 61 133 320 474 494 878 949 
+V951 connects: none
+V952 connects: 118 380 427 
+V953 connects: 217 341 737 739 840 935 
+V954 connects: 55 81 162 368 431 570 796 989 
+V955 connects: 363 
+V956 connects: 31 221 228 289 521 593 734 781 806 885 937 
+V957 connects: 26 76 103 165 207 342 563 627 745 810 
+V958 connects: 307 715 
+V959 connects: 831 
+V960 connects: 124 212 399 677 
+V961 connects: 23 148 211 242 314 361 669 674 695 838 953 990 
+V962 connects: 408 822 
+V963 connects: none
+V964 connects: 36 564 731 
+V965 connects: 208 219 469 673 719 
+V966 connects: 236 297 312 417 456 483 718 
+V967 connects: 88 
+V968 connects: 293 310 
+V969 connects: 751 
+V970 connects: 48 82 215 334 502 763 767 828 
+V971 connects: 54 629 
+V972 connects: 95 111 
+V973 connects: 77 195 259 337 436 812 
+V974 connects: 38 621 
+V975 connects: 115 198 484 536 622 658 692 747 977 
+V976 connects: none
+V977 connects: 169 177 227 
+V978 connects: 359 
+V979 connects: 70 126 277 338 376 403 492 690 769 
+V980 connects: 445 
+V981 connects: 362 
+V982 connects: 575 586 
+V983 connects: 516 978 
+V984 connects: 276 319 574 832 
+V985 connects: 22 282 495 508 571 675 717 867 942 994 
+V986 connects: 137 430 482 613 834 
+V987 connects: 184 226 422 606 652 664 711 815 938 
+V988 connects: 37 58 178 518 546 
+V989 connects: 253 374 447 550 646 755 805 872 957 961 
+V990 connects: 60 114 127 316 392 548 699 813 851 
+V991 connects: none
+V992 connects: 109 691 
+V993 connects: none
+V994 connects: 16 17 128 182 538 672 716 803 887 
+V995 connects: 62 75 84 964 
+V996 connects: 2 120 381 402 470 560 631 886 966 
+V997 connects: 91 140 150 223 438 706 811 899 932 
+V998 connects: 534 569 782 788 836 923 
+V999 connects: 80 274 332 413 594 799 827 844 

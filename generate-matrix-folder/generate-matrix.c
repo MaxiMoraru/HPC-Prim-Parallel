@@ -37,9 +37,11 @@ void generateMatrix(int n) {
                     matrix[i][j] = matrix[j][i];
                 }
             }
+            fprintf(file, "%d ", matrix[i][j]);
         }
+        fprintf(file, "\n");
     }
-
+    /*
     // Write the matrix to the file
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++) {
@@ -47,7 +49,7 @@ void generateMatrix(int n) {
         }
         fprintf(file, "\n");
     }
-    
+    */
     // Close the file
     fclose(file);
 }
@@ -55,7 +57,7 @@ void generateMatrix(int n) {
 int main() {
 
     // Generate the matrices
-    generateMatrix(100);
+    generateMatrix(1000);
 
     return 0;
 }

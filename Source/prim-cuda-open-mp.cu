@@ -24,6 +24,8 @@ __global__ void findMin(int *Matrix, Connection *MST, Connection *min, int mSize
 
     for (int i = index; i < mSize; i += stride) {
         min[index].value = INT_MAX;
+        min[index].v1 = -1;
+        min[index].v2 = -1;
         if (MST[i].value != -1) {
             for (int j = 0; j < mSize; ++j) {
                 if (MST[j].value == -1 && Matrix[mSize*i+j] < min[index].value && Matrix[mSize*i+j] != 0) {
@@ -49,13 +51,13 @@ int main(int argc,char *argv[]){
     Connection *MST; // Declare MST variable
 
     // Open the file
-    f_matrix = fopen("./Data/matrix-100.txt", "r");
+    f_matrix = fopen("./Data/matrix-1000.txt", "r");
     if (f_matrix){
         // Read the number of vertices
         fscanf(f_matrix, "%d\n", &mSize);
     }
     else {
-        printf("File matrix-100.txt not found.\n");
+        printf("File matrix-1000.txt not found.\n");
         return 1;
     }
 
@@ -76,7 +78,6 @@ int main(int argc,char *argv[]){
     // find the MST
     /*****************************************************/
 
-    
 
     //declare device variables
     int *dev_Matrix;
@@ -131,6 +132,9 @@ int main(int argc,char *argv[]){
         cudaMemcpy(min, dev_min, mSize * sizeof(Connection), cudaMemcpyDeviceToHost);
         
         //print the min array indicating the min value it contains, the vertices its connected to and the vertices its connected from and the iteration number k it is in while also ignoring the INT_MAX values
+        
+    
+        
 
         //find global min
         Connection globalMin;
@@ -143,16 +147,13 @@ int main(int argc,char *argv[]){
 
         #pragma omp parallel for reduction(minimum: globalMin)
 
-        for (int i = 0; i < mSize; ++i) {
+        for (int i = 0; i < k+1; ++i) {
             if (min[i].value < globalMin.value) {
                 globalMin = min[i];
             }
         }
-
         MST[globalMin.v2] = globalMin;
         minWeight += globalMin.value;
-
-    
 
         //update MST on device
         cudaMemcpy(dev_MST, MST, mSize * sizeof(Connection), cudaMemcpyHostToDevice);
@@ -174,7 +175,7 @@ int main(int argc,char *argv[]){
         fprintf(f_result,"V%d connects: ", i);
         bool isConnected = false;
         for (int j = 0; j < mSize; ++j) {
-            if (MST[j].v1 == i || MST[j].v2 == i) {
+            if ((MST[j].v1 == i || MST[j].v2 == i) && j != i) {
                 fprintf(f_result, "%d ", j);
                 isConnected = true;
             }
