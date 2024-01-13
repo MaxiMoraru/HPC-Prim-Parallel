@@ -1,0 +1,101 @@
+The min minWeight is 246
+V0 connects: 6 15 19 22 38 47 57 
+V1 connects: 81 
+V2 connects: 21 84 
+V3 connects: 26 
+V4 connects: none
+V5 connects: 12 36 43 60 62 92 
+V6 connects: 14 39 80 85 90 94 99 
+V7 connects: none
+V8 connects: 17 50 
+V9 connects: none
+V10 connects: none
+V11 connects: 41 54 63 71 
+V12 connects: none
+V13 connects: 74 77 95 
+V14 connects: 5 11 65 
+V15 connects: 7 66 88 
+V16 connects: none
+V17 connects: 82 
+V18 connects: none
+V19 connects: 2 30 52 
+V20 connects: none
+V21 connects: 75 
+V22 connects: 13 18 25 
+V23 connects: 28 87 
+V24 connects: 51 
+V25 connects: none
+V26 connects: 29 
+V27 connects: 8 
+V28 connects: 9 56 
+V29 connects: 72 86 93 
+V30 connects: 3 24 
+V31 connects: 48 
+V32 connects: none
+V33 connects: none
+V34 connects: 96 
+V35 connects: 32 64 
+V36 connects: none
+V37 connects: none
+V38 connects: 35 76 
+V39 connects: none
+V40 connects: none
+V41 connects: 89 
+V42 connects: none
+V43 connects: 53 79 
+V44 connects: none
+V45 connects: none
+V46 connects: none
+V47 connects: 34 55 
+V48 connects: 4 16 
+V49 connects: none
+V50 connects: none
+V51 connects: none
+V52 connects: 31 68 
+V53 connects: 27 
+V54 connects: none
+V55 connects: none
+V56 connects: none
+V57 connects: 46 
+V58 connects: none
+V59 connects: none
+V60 connects: 23 
+V61 connects: none
+V62 connects: 83 
+V63 connects: none
+V64 connects: 40 
+V65 connects: 69 
+V66 connects: none
+V67 connects: none
+V68 connects: 10 
+V69 connects: 70 
+V70 connects: none
+V71 connects: 44 
+V72 connects: 59 97 
+V73 connects: 49 
+V74 connects: none
+V75 connects: none
+V76 connects: 20 45 
+V77 connects: 37 91 
+V78 connects: none
+V79 connects: none
+V80 connects: 67 
+V81 connects: none
+V82 connects: 73 
+V83 connects: none
+V84 connects: 78 
+V85 connects: 42 
+V86 connects: 33 98 
+V87 connects: 61 
+V88 connects: 58 
+V89 connects: 1 
+V90 connects: none
+V91 connects: none
+V92 connects: none
+V93 connects: none
+V94 connects: none
+V95 connects: none
+V96 connects: none
+V97 connects: none
+V98 connects: none
+V99 connects: none

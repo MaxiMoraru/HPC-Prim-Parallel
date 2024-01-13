@@ -1,3 +1,33 @@
+/*
+
+#-Moraru, Maximilian Marius, MAT. 0622702167, m.moraru@studenti.unisa.it
+#-Algoritmo “Prim”
+#-Moscato Francesco, fmoscato@unisa.it
+#-Final Projects are assigned to each student. Student shall provide a parallel version of an algorithm with both "OpenMP + MPI" and "OpenMP + Cuda" approaches, comparing results with a known solution on single-processing node. Results and differences shall be discussed for different inputs (type and size). The parallel algorithm used in "OpenMP + MPI" solution could not be the same of the "OpenMP + CUDA" approach.
+
+
+this program is the parallel version of prim algorithm using mpi and openmp
+the program is run with the command mpirun -np <number of processors> ./prim-mpi-open-mp <number of vertices>
+the program will read the matrix from the file Data/matrix-<number of vertices>.txt
+the program will write the result in the file Data/ResultMpi.txt
+the program will write the time in the file Data/TimeMpi.txt
+Copyright (C) <2024>  <Maximilian Marius Moraru>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,8 +40,7 @@
 #include <stdbool.h>
 
 
-
-#define MATRIXFILE "./Data/matrix-1000.txt"
+#define MATRIXFILE "./Data/matrix-500.txt"
 
 typedef struct Connection {
     int value;
@@ -34,6 +63,9 @@ int minWeight; // minimum weight
 FILE *f_matrix; // file of matrix
 FILE *f_time; // file of time 
 FILE *f_result; // file of result
+double program_time_start;
+double load_data_time_stop;
+double program_time_stop;
 
 typedef struct ConnRank {
     Connection conn;
@@ -53,9 +85,28 @@ void minConnRank(void *in, void *inout, int *len, MPI_Datatype *datatype){
 
 int main(int argc,char *argv[]){
 
+    // Check if the command line argument is provided
+    if (argc < 2) {
+        printf("Error: No command line argument provided\n");
+        return 1;
+    }
+
+    // Create a character array to hold the filename
+    char matrixFile[50];
+
+    // Format the filename string with the command line argument
+    sprintf(matrixFile, "./Data/matrix-%s.txt", argv[1]);
+
+    
+
     MPI_Init ( &argc, &argv );
     MPI_Comm_rank ( MPI_COMM_WORLD, &rank);
     MPI_Comm_size ( MPI_COMM_WORLD, &size );
+
+    //start the timer
+    if(rank == 0){
+        program_time_start = MPI_Wtime();
+    }
 
     // Define the MPI datatype for the ConnRank struct
     MPI_Datatype connRankType;
@@ -72,7 +123,7 @@ int main(int argc,char *argv[]){
     // read the number of vertices from file
     /************************************************/
     if (rank==0){
-        f_matrix = fopen(MATRIXFILE, "r");
+        f_matrix = fopen(matrixFile, "r");
         if (f_matrix){
             fscanf(f_matrix, "%d\n", &mSize);
         }
@@ -151,10 +202,14 @@ int main(int argc,char *argv[]){
         free(MatrixChunkRead);
 
         fclose(f_matrix);
-
     } else {
         // Receive the local matrix on other processes
         MPI_Recv(MatrixChunk, sendcounts[rank] * mSize, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    }
+
+    //save time after loading data
+    if(rank == 0){
+        load_data_time_stop = MPI_Wtime();
     }
     
     /************************************************/
@@ -168,9 +223,6 @@ int main(int argc,char *argv[]){
         MST[i].value = -1;
     }
     
-    double start; 
-
-    start = MPI_Wtime(); // start to calculate running time
         
     MST[0].value = 0;
     MST[0].v1 = 0;
@@ -240,30 +292,43 @@ int main(int argc,char *argv[]){
 
         MST[globalMin.conn.v2] = globalMin.conn;
         minWeight += globalMin.conn.value;
+        //check if the mst added is the same as the value from the matrix it represents if the rank is the same as the rank of the vertex
+        /*
+        if(rank == globalMin.rank){
+            if(MatrixChunk[mSize*(globalMin.conn.v1-displs[rank]) + globalMin.conn.v2] != globalMin.conn.value){
+                printf("Error: MST value is not the same as the value from the matrix it represents\n");
+            }else{
+                printf("OK\n");
+            }
+        }
+        */
+        
     }
     
     /************************************************/
     // print the result
     /************************************************/
 
-    double finish, calc_time; 
-    finish = MPI_Wtime();
-    calc_time = finish-start;
-
-
-
+    //stop the timer
+    if(rank == 0){
+        program_time_stop = MPI_Wtime();
+    } 
+    
     if (rank == 0){
 
+        //calculate the time of execution
+        double total_time = program_time_stop - program_time_start;
+        double load_data_time = load_data_time_stop - program_time_start;
+        double calc_time = program_time_stop - load_data_time_stop;
+    
 
-
-         // Open the result file and write the results
-        f_result = fopen("./Data/Result.txt", "w");
+        // Open the result file and write the results
+        f_result = fopen("./Data/ResultMpi.txt", "w");
         fprintf(f_result,"The min minWeight is %d\n", minWeight);
         for (int i = 0; i < mSize; ++i){
             fprintf(f_result,"V%d connects: ", i);
             bool isConnected = false;
             for (int j = 0; j < mSize; ++j) {
-                printf("MST[%d].v1 = %d\n", j, MST[j].v1);
                 if ((MST[j].v1 == i || MST[j].v2 == i) && j != i) {
                     fprintf(f_result, "%d ", j);
                     isConnected = true;
@@ -277,10 +342,21 @@ int main(int argc,char *argv[]){
         fclose(f_result);
 
 
-        f_time = fopen("./Data/Time.txt", "a+");
-        fprintf(f_time, "\n Number of processors: %d\n Number of vertices: %d\n Time of execution: %f\n Total Weight: %d\n\n", size, mSize ,calc_time, minWeight);
-        fclose(f_time);
+        f_time = fopen("./Data/TimeMpi.txt", "a+");
+        //if the file is empty write the columns names as cvs format : Threads, Processors, Vertices, Load data time, Calculation time, Total time\n"
+        if(ftell(f_time) == 0){
+            //fprintf(f_time, "Vertices, Processors, Threads, Load data time, Calculation time, Total time\n");
+        }
+        //now print the values
         
+        
+        #ifdef USE_OPENMP
+            fprintf(f_time, "%d, %d, %d, %f, %f, %f\n", mSize, size, omp_get_max_threads(), load_data_time, calc_time , total_time);
+        #else
+            fprintf(f_time, "%d, %d, %d, %f, %f, %f\n", mSize, size, 0, load_data_time, calc_time , total_time);
+        #endif
+        fclose(f_time);
+
     }
 
     free(MatrixChunk);
@@ -294,3 +370,5 @@ int main(int argc,char *argv[]){
     return 0;
 
     }
+
+

@@ -1,0 +1,2 @@
+Vertices, Load data time, Calculation time, Total time
+100, 0.000428, 0.000878, 0.001306

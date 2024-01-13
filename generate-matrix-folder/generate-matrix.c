@@ -57,7 +57,7 @@ void generateMatrix(int n) {
 int main() {
 
     // Generate the matrices
-    generateMatrix(1000);
+    generateMatrix(500);
 
     return 0;
 }
